@@ -21,3 +21,7 @@ This mirrors the *idea* behind oUF (core + external layouts), but for **visual s
 - Configure the active theme plus enabled skinning, FX, Roth Mode, font, and optional Masque modules in addon settings.
 - Development status: no older active tracker was present; the repository now records smoke testing for theme application, module toggles, options, and combat-deferred changes in [todo.md](todo.md).
 - [Architecture](ARCHITECTURE.md) · [Code index](CODE_INDEX.md) · [Code graph](CODE_GRAPH.md)
+
+## License
+
+Licensed under the [MIT License](LICENSE). Bundled third-party components remain under their own notices.
