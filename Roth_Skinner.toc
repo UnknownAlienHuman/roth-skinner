@@ -1,0 +1,29 @@
+## Interface: 120000
+## Title: Roth Skinner
+## Notes: Core framework for global UI skinning (themes + modules) for Roth UI.
+## Author: Roth UI Project
+## Version: 0.6.1
+## SavedVariables: RothSkinnerDB
+## OptionalDeps: Masque
+
+Core.lua
+Themes/AshBlood/theme.lua
+
+Modules/DevTools.lua
+Modules/OptionsPanel.lua
+Modules/DoctorPanel.lua
+Modules/Masque_Options.lua
+Modules/MasqueBridge.lua
+Modules/Masque_Integration.lua
+Modules/Example_Tooltip.lua
+Modules/FontPolicy.lua
+Modules/NineSlice_Panels.lua
+Modules/WidgetPolicy_Basics.lua
+Modules/WidgetPolicy_Controls.lua
+Modules/Blizzard_SettingsSkin.lua
+Modules/FX_Frames.lua
+Modules/FX_Faders.lua
+Modules/FX_Dynamics.lua
+Modules/FX_Options.lua
+Modules/RothMode_Global.lua
+Modules/RothMode_Options.lua
