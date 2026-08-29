@@ -1,12 +1,14 @@
-## Interface: 120000
+## Interface: 120100
 ## Title: Roth Skinner
 ## Notes: Core framework for global UI skinning (themes + modules) for Roth UI.
 ## Author: Roth UI Project
-## Version: 0.6.1
+## Version: 0.6.2
 ## SavedVariables: RothSkinnerDB
 ## OptionalDeps: Masque
+## X-Verified-Build: 12.1.0.69497
 
 Core.lua
+Core_12_1.lua
 Themes/AshBlood/theme.lua
 
 Modules/DevTools.lua
