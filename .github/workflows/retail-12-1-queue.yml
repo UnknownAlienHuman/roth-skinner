@@ -1,0 +1,53 @@
+name: Retail 12.1 queue validation
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Install Lua 5.1
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.1
+
+      - name: Parse queue owner and regression
+        run: |
+          luac5.1 -p Core_12_1.lua
+          luac5.1 -p tests/test_combat_queue_12_1.lua
+
+      - name: Run queue regression
+        run: lua5.1 tests/test_combat_queue_12_1.lua
+
+      - name: Enforce load order and metadata
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          toc = Path('Roth_Skinner.toc').read_text(encoding='utf-8')
+          assert '## Interface: 120100' in toc
+          assert '## Version: 0.6.2' in toc
+          assert toc.index('Core.lua') < toc.index('Core_12_1.lua') < toc.index('Themes/AshBlood/theme.lua')
+
+          overlay = Path('Core_12_1.lua').read_text(encoding='utf-8')
+          required = [
+              'if InCombatLockdown() then',
+              'PLAYER_REGEN_ENABLED',
+              'BudgetedResume:',
+              'queueRunning = false',
+          ]
+          missing = [token for token in required if token not in overlay]
+          if missing:
+              raise SystemExit(f'Missing queue contracts: {missing}')
+          print('Queue policy: PASS')
+          PY
